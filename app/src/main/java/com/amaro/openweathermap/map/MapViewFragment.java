@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -31,7 +32,7 @@ import com.google.android.gms.maps.model.Marker;
  * Created by amaro on 16/10/16.
  */
 
-public class MapViewFragment extends Fragment implements GoogleMap.OnMarkerClickListener, GoogleApiClient.ConnectionCallbacks {
+public class MapViewFragment extends Fragment implements GoogleMap.OnMapClickListener, GoogleMap.OnMarkerClickListener, GoogleApiClient.ConnectionCallbacks {
 
     MapView mMapView;
     private GoogleMap googleMap;
@@ -81,6 +82,7 @@ public class MapViewFragment extends Fragment implements GoogleMap.OnMarkerClick
 
                 googleMap.setMyLocationEnabled(true);
                 googleMap.setOnMarkerClickListener(MapViewFragment.this);
+                googleMap.setOnMapClickListener(MapViewFragment.this);
                 //googleMap.setOnMyLocationChangeListener(MapViewFragment.this);
 
 
@@ -173,5 +175,12 @@ public class MapViewFragment extends Fragment implements GoogleMap.OnMarkerClick
     @Override
     public boolean onMarkerClick(Marker marker) {
         return false;
+    }
+
+    @Override
+    public void onMapClick(LatLng latLng) {
+        Log.d("OPW","CLICOU: lat : "+ latLng.latitude+" : lng "+latLng.longitude);
+
+
     }
 }

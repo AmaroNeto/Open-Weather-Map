@@ -2,4 +2,6 @@
     <string name="app_name">Open Weather Map</string>
     <string name="map">Map</string>
     <string name="favorites">Favorites</string>
+    <string name="wait_a_little">Wait a Little ...</string>
+    <string name="download_data">Downloading Data</string>
 </resources>
