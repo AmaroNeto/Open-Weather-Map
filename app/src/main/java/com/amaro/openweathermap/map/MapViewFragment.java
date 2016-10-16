@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.amaro.openweathermap.R;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -27,6 +28,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 /**
  * Created by amaro on 16/10/16.
@@ -34,10 +36,12 @@ import com.google.android.gms.maps.model.Marker;
 
 public class MapViewFragment extends Fragment implements GoogleMap.OnMapClickListener, GoogleMap.OnMarkerClickListener, GoogleApiClient.ConnectionCallbacks {
 
-    MapView mMapView;
+    private MapView mMapView;
     private GoogleMap googleMap;
-    boolean hidden=true;
+
     private Location mLastLocation;
+    private String lat;
+    private String lng;
 
 
     GoogleApiClient mGoogleApiClient;
@@ -81,6 +85,7 @@ public class MapViewFragment extends Fragment implements GoogleMap.OnMapClickLis
                 }
 
                 googleMap.setMyLocationEnabled(true);
+                googleMap.getUiSettings().setZoomControlsEnabled(true);
                 googleMap.setOnMarkerClickListener(MapViewFragment.this);
                 googleMap.setOnMapClickListener(MapViewFragment.this);
                 //googleMap.setOnMyLocationChangeListener(MapViewFragment.this);
@@ -88,6 +93,9 @@ public class MapViewFragment extends Fragment implements GoogleMap.OnMapClickLis
 
             }
         });
+
+        lat = "";
+        lng = "";
 
 
         return rootView;
@@ -149,7 +157,7 @@ public class MapViewFragment extends Fragment implements GoogleMap.OnMapClickLis
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 
         //Custom Menu
-        //inflater.inflate(R.menu.map_menu, menu);
+        inflater.inflate(R.menu.map_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
 
     }
@@ -158,10 +166,17 @@ public class MapViewFragment extends Fragment implements GoogleMap.OnMapClickLis
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()){
-            /*case R.id.action_update:
+            case R.id.action_search:
 
+                if(lat.equals("") || lng.equals("")){
 
-                break;*/
+                    Toast.makeText(getActivity(),this.getString(R.string.choose_a_place),Toast.LENGTH_LONG).show();
+
+                }else{
+                    Log.d("OPW","CLICOU: lat : "+ lat+" : lng "+lng);
+                }
+
+                break;
 
         }
         return true;
@@ -179,8 +194,14 @@ public class MapViewFragment extends Fragment implements GoogleMap.OnMapClickLis
 
     @Override
     public void onMapClick(LatLng latLng) {
-        Log.d("OPW","CLICOU: lat : "+ latLng.latitude+" : lng "+latLng.longitude);
 
+        //Seleciona as coordenadas de pesquisa
+        lat = latLng.latitude+"";
+        lng = latLng.longitude+"";
+
+        googleMap.clear();
+        Marker melbourne = googleMap.addMarker(new MarkerOptions()
+                .position(latLng));
 
     }
 }
