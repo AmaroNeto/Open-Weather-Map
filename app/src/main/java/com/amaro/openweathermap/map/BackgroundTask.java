@@ -12,6 +12,7 @@ import com.amaro.openweathermap.city.City;
 import com.amaro.openweathermap.city.CityListActivity;
 import com.amaro.openweathermap.repository.CityController;
 import com.amaro.openweathermap.util.OwmVars;
+import com.amaro.openweathermap.util.Util;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -141,6 +142,7 @@ public class BackgroundTask extends AsyncTask<Void, Void, Boolean> {
                     JSONArray weather = city.getJSONArray("weather");
                     String main = weather.getJSONObject(0).getString("main");
                     String description = weather.getJSONObject(0).getString("description");
+                    String icon = weather.getJSONObject(0).getString("icon");
 
                     //Criação dos Objetos
                     City cityObj = new City();
@@ -148,11 +150,12 @@ public class BackgroundTask extends AsyncTask<Void, Void, Boolean> {
                     cityObj.setName(name);
                     cityObj.setLat(lat);
                     cityObj.setLng(lng);
-                    cityObj.setTemp(temp);
-                    cityObj.setMax_temp(temp_max);
-                    cityObj.setMin_temp(temp_min);
+                    cityObj.setTemp(Util.FahrenheitToCelsius(temp));
+                    cityObj.setMax_temp(Util.FahrenheitToCelsius(temp_max));
+                    cityObj.setMin_temp(Util.FahrenheitToCelsius(temp_min));
                     cityObj.setDescription(description);
                     cityObj.setTitle_description(main);
+                    cityObj.setIcon(Util.iconStringToIconInt(icon));
 
                     cityController.addCity(cityObj);
                     Log.d("OWM", "city : " + city );

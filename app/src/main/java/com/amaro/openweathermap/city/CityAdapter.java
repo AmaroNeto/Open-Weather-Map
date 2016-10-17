@@ -1,10 +1,14 @@
 package com.amaro.openweathermap.city;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amaro.openweathermap.R;
@@ -48,12 +52,30 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
     }
 
     @Override
-    public void onBindViewHolder(CityViewHolder holder, int position) {
+    public void onBindViewHolder(final CityViewHolder holder, int position) {
 
-        City obj = mCities.get(position);
+        final City obj = mCities.get(position);
 
         holder.title.setText( obj.getName() );
+        //holder.icon.setImageResource(obj.getIcon());
         holder.data = obj;
+
+        final ImageView icon = holder.icon;
+
+        //Carrega os icones em background para não sobrecarregar a main
+        holder.loadImage = new AsyncTask<Void, Void, Bitmap>() {
+            @Override
+            protected Bitmap doInBackground(Void... params) {
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inSampleSize = 2;
+                return BitmapFactory.decodeStream(context.getResources().openRawResource(obj.getIcon()), null, options);
+            }
+            @Override
+            protected void onPostExecute(Bitmap bitmap) {
+                icon.setImageBitmap(bitmap);
+            }
+        };
+        holder.loadImage.execute();
 
     }
 
@@ -70,13 +92,16 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
 
 
         TextView title;
+        ImageView icon;
+        AsyncTask<Void, Void, Bitmap> loadImage;
+
         City data;
 
         public CityViewHolder(View parent){
             super(parent);
 
             title = (TextView) parent.findViewById(R.id.city_title);
-
+            icon = (ImageView) parent.findViewById(R.id.icon);
 
         }
 

@@ -18,6 +18,7 @@ public class City {
 
     private String lat;
     private String lng;
+    private int icon;
 
     public Double getTemp() {
         return temp;
@@ -89,5 +90,13 @@ public class City {
 
     public void setLng(String lng) {
         this.lng = lng;
+    }
+
+    public int getIcon() {
+        return icon;
+    }
+
+    public void setIcon(int icon) {
+        this.icon = icon;
     }
 }
