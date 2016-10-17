@@ -16,7 +16,9 @@ public class Util {
      */
     public static Double FahrenheitToCelsius(Double fah )
     {
-        return  ((fah - 32) * 5) / 9;
+        double ft = 5.0 / 9.0;
+        double cel = ft * (fah - 32.0);
+        return  cel;
 
 
     }

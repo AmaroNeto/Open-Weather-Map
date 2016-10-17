@@ -7,4 +7,7 @@
     <string name="choose_a_place">Choose a location on the map</string>
     <string name="error_download_data">Error Download Data</string>
     <string name="by_amaro">by Amaro</string>
+    <string name="temperature">Temperature</string>
+    <string name="temperature_max">Max Temperature</string>
+    <string name="temperature_min">Min Temperature</string>
 </resources>

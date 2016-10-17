@@ -86,7 +86,7 @@ public class BackgroundTask extends AsyncTask<Void, Void, Boolean> {
 
         try {
             //String host= "http://api.openweathermap.org/data/2.5/find?lat=9.199226759834747&lon=38.94587405025959&cnt=15&APPID=dde59122af8801206943afb72b61cd89";
-            String host = "http://api.openweathermap.org/data/2.5/find?lat="+lat+"&lon="+lng+"&cnt=15&APPID="+ OwmVars.owmAppId;
+            String host = "http://api.openweathermap.org/data/2.5/find?lat="+lat+"&lon="+lng+"&cnt=15&units=metric&APPID="+ OwmVars.owmAppId;
            //String host = URLEncoder.encode("http://api.openweathermap.org/data/2.5/find?lat="+lat+"&lon="+lng+"&cnt=15&APPID="+ OwmVars.owmAppId+"/","UTF-8");
             URL obj = new URL(host);
 
@@ -150,15 +150,16 @@ public class BackgroundTask extends AsyncTask<Void, Void, Boolean> {
                     cityObj.setName(name);
                     cityObj.setLat(lat);
                     cityObj.setLng(lng);
-                    cityObj.setTemp(Util.FahrenheitToCelsius(temp));
-                    cityObj.setMax_temp(Util.FahrenheitToCelsius(temp_max));
-                    cityObj.setMin_temp(Util.FahrenheitToCelsius(temp_min));
+                    cityObj.setTemp(temp);
+                    cityObj.setMax_temp(temp_max);
+                    cityObj.setMin_temp(temp_min);
                     cityObj.setDescription(description);
                     cityObj.setTitle_description(main);
                     cityObj.setIcon(Util.iconStringToIconInt(icon));
 
                     cityController.addCity(cityObj);
-                    Log.d("OWM", "city : " + city );
+                    //Log.d("OWM", "city : " + city );
+                    //Log.d("OWM", "temp : " + temp +" cel: "+Util.FahrenheitToCelsius(temp));
                 }
 
 

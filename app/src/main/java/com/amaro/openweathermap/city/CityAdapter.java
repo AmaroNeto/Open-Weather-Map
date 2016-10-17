@@ -1,10 +1,12 @@
 package com.amaro.openweathermap.city;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -103,11 +105,21 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
             title = (TextView) parent.findViewById(R.id.city_title);
             icon = (ImageView) parent.findViewById(R.id.icon);
 
+            parent.setOnClickListener(this);
+            parent.setOnLongClickListener(this);
+
         }
 
 
         @Override
         public void onClick(View v) {
+
+            Log.d("OWM","Clicou "+data.getName());
+
+            //Vai para a pagina de detalhes
+            Intent it = new Intent(context,CityDetailActivity.class);
+            it.putExtra("CITY",data);
+            context.startActivity(it);
 
         }
 

@@ -1,12 +1,14 @@
 package com.amaro.openweathermap.city;
 
+import java.io.Serializable;
+
 /**
  * Classe que define uma cidade.
  *
  * Created by amaro on 15/10/16.
  */
 
-public class City {
+public class City implements Serializable {
 
     private String id;
     private String name;
