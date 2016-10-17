@@ -159,7 +159,7 @@ public class BackgroundTask extends AsyncTask<Void, Void, Boolean> {
 
                     cityController.addCity(cityObj);
                     //Log.d("OWM", "city : " + city );
-                    //Log.d("OWM", "temp : " + temp +" cel: "+Util.FahrenheitToCelsius(temp));
+                    //Log.d("OWM", "name: "+name+"temp : " + temp +" max: "+temp_max+" min: "+temp_min);
                 }
 
 

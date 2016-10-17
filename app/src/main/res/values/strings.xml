@@ -10,4 +10,5 @@
     <string name="temperature">Temperature</string>
     <string name="temperature_max">Max Temperature</string>
     <string name="temperature_min">Min Temperature</string>
+    <string name="transition_icon_image">Transition Icon</string>
 </resources>

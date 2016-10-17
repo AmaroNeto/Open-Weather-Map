@@ -1,5 +1,7 @@
 package com.amaro.openweathermap.city;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -119,7 +121,16 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
             //Vai para a pagina de detalhes
             Intent it = new Intent(context,CityDetailActivity.class);
             it.putExtra("CITY",data);
-            context.startActivity(it);
+
+            //Animação
+            View sharedView = icon;
+            String transitionName = context.getString(R.string.transition_icon_image);
+            ActivityOptions transitionActivityOptions = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation((Activity) context, sharedView, transitionName);
+            }
+
+            context.startActivity(it,transitionActivityOptions.toBundle());
 
         }
 
