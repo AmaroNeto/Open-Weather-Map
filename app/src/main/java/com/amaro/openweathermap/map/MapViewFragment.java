@@ -145,7 +145,7 @@ public class MapViewFragment extends Fragment implements GoogleMap.OnMapClickLis
 
                 LatLng i = new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude());
 
-                CameraPosition cameraPosition = new CameraPosition.Builder().target(i).zoom(16).build();
+                CameraPosition cameraPosition = new CameraPosition.Builder().target(i).zoom(8).build();
                 googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             }
 

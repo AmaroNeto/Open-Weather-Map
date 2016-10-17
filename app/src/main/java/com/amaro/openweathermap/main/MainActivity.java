@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity{
 
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.partly_cloudy_icon);
         setSupportActionBar(toolbar);
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);

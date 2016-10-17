@@ -94,13 +94,13 @@ public class BackgroundTask extends AsyncTask<Void, Void, Boolean> {
             //add reuqest header
             con.setRequestMethod("GET");
             con.setRequestProperty("User-Agent", USER_AGENT);
-            con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+            //con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 
             // Send GET request
-            con.setDoOutput(true);
+            /*con.setDoOutput(true);
             DataOutputStream wr = new DataOutputStream(con.getOutputStream());
             wr.flush();
-            wr.close();
+            wr.close();*/
 
             int responseCode = con.getResponseCode();
 
