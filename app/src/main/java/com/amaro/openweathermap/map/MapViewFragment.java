@@ -85,7 +85,7 @@ public class MapViewFragment extends Fragment implements GoogleMap.OnMapClickLis
                 }
 
                 googleMap.setMyLocationEnabled(true);
-                googleMap.getUiSettings().setZoomControlsEnabled(true);
+                //googleMap.getUiSettings().setZoomControlsEnabled(true);
                 googleMap.setOnMarkerClickListener(MapViewFragment.this);
                 googleMap.setOnMapClickListener(MapViewFragment.this);
                 //googleMap.setOnMyLocationChangeListener(MapViewFragment.this);
@@ -173,7 +173,9 @@ public class MapViewFragment extends Fragment implements GoogleMap.OnMapClickLis
                     Toast.makeText(getActivity(),this.getString(R.string.choose_a_place),Toast.LENGTH_LONG).show();
 
                 }else{
-                    Log.d("OPW","CLICOU: lat : "+ lat+" : lng "+lng);
+                    //Log.d("OPW","CLICOU: lat : "+ lat+" : lng "+lng);
+                    BackgroundTask task = new BackgroundTask(getActivity(), lat, lng);
+                    task.execute();
                 }
 
                 break;
@@ -200,7 +202,7 @@ public class MapViewFragment extends Fragment implements GoogleMap.OnMapClickLis
         lng = latLng.longitude+"";
 
         googleMap.clear();
-        Marker melbourne = googleMap.addMarker(new MarkerOptions()
+        googleMap.addMarker(new MarkerOptions()
                 .position(latLng));
 
     }

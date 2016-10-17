@@ -10,12 +10,30 @@ public class City {
 
     private String id;
     private String name;
-    private float max_temp;
-    private float min_temp;
+    private Double temp;
+    private Double max_temp;
+    private Double min_temp;
+    private String title_description;
     private String description;
 
     private String lat;
     private String lng;
+
+    public Double getTemp() {
+        return temp;
+    }
+
+    public void setTemp(Double temp) {
+        this.temp = temp;
+    }
+
+    public String getTitle_description() {
+        return title_description;
+    }
+
+    public void setTitle_description(String title_description) {
+        this.title_description = title_description;
+    }
 
     public String getId() {
         return id;
@@ -33,19 +51,19 @@ public class City {
         this.name = name;
     }
 
-    public float getMax_temp() {
+    public Double getMax_temp() {
         return max_temp;
     }
 
-    public void setMax_temp(float max_temp) {
+    public void setMax_temp(Double max_temp) {
         this.max_temp = max_temp;
     }
 
-    public float getMin_temp() {
+    public Double getMin_temp() {
         return min_temp;
     }
 
-    public void setMin_temp(float min_temp) {
+    public void setMin_temp(Double min_temp) {
         this.min_temp = min_temp;
     }
 

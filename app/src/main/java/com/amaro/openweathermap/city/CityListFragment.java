@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.amaro.openweathermap.R;
+import com.amaro.openweathermap.repository.CityController;
 import com.amaro.openweathermap.util.DividerItemDecoration;
 
 import java.util.ArrayList;
@@ -29,10 +30,13 @@ public class CityListFragment extends Fragment{
     protected CityAdapter mAdapter;
 
     private List<City> mCities;
+    private CityController cityController;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        cityController = CityController.getInstance();
 
         setHasOptionsMenu(true);
 
@@ -60,8 +64,9 @@ public class CityListFragment extends Fragment{
 
     public List<City> getmCities(){
 
-        List<City> cities = new ArrayList<City>();
+        //List<City> cities = new ArrayList<City>();
 
+        List<City> cities = cityController.getAllCities();
         return cities;
 
     }

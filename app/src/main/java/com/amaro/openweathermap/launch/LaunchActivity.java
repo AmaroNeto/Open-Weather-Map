@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.amaro.openweathermap.R;
 import com.amaro.openweathermap.main.MainActivity;
+import com.amaro.openweathermap.repository.CityController;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,7 +26,7 @@ public class LaunchActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.launch_activity);
 
-
+        CityController.getInstance();
 
 
         new Timer().schedule(new TimerTask() {
