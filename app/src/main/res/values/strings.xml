@@ -12,4 +12,5 @@
     <string name="temperature_min">Min Temperature</string>
     <string name="transition_icon_image">Transition Icon</string>
     <string name="historic">Historic</string>
+    <string name="enable_internet">Necessary to Enable Internet</string>
 </resources>

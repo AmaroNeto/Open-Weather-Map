@@ -20,6 +20,7 @@ public class CityListActivity extends AppCompatActivity {
         setContentView(R.layout.city_list_activity);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         //toolbar.setNavigationIcon(R.drawable.partly_cloudy_icon);
         setSupportActionBar(toolbar);
 

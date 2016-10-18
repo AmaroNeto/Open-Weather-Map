@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.amaro.openweathermap.R;
+import com.amaro.openweathermap.util.OwmApplication;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -175,14 +176,18 @@ public class MapViewFragment extends Fragment implements GoogleMap.OnMapClickLis
         switch (item.getItemId()){
             case R.id.action_search:
 
-                if(lat.equals(0.0) || lng.equals(0.0)){
+                if(OwmApplication.checkInternetConnection()) {
+                    if (lat.equals(0.0) || lng.equals(0.0)) {
 
-                    Toast.makeText(getActivity(),this.getString(R.string.choose_a_place),Toast.LENGTH_LONG).show();
+                        Toast.makeText(getActivity(), this.getString(R.string.choose_a_place), Toast.LENGTH_LONG).show();
 
+                    } else {
+                        //Log.d("OPW","CLICOU: lat : "+ lat+" : lng "+lng);
+                        BackgroundTask task = new BackgroundTask(getActivity(), lat + "", lng + "");
+                        task.execute();
+                    }
                 }else{
-                    //Log.d("OPW","CLICOU: lat : "+ lat+" : lng "+lng);
-                    BackgroundTask task = new BackgroundTask(getActivity(), lat+"", lng+"");
-                    task.execute();
+                    Toast.makeText(getActivity(), this.getString(R.string.enable_internet), Toast.LENGTH_LONG).show();
                 }
 
                 break;

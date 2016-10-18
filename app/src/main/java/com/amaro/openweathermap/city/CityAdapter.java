@@ -147,9 +147,12 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
             ActivityOptions transitionActivityOptions = null;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                 transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation((Activity) context, sharedView, transitionName);
+                context.startActivity(it,transitionActivityOptions.toBundle());
+            }else{
+                context.startActivity(it);
             }
 
-            context.startActivity(it,transitionActivityOptions.toBundle());
+
 
         }
 

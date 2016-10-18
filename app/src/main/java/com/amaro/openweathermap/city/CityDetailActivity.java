@@ -32,12 +32,13 @@ public class CityDetailActivity extends AppCompatActivity{
         setContentView(R.layout.city_detail_activity);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //toolbar.setNavigationIcon(R.drawable.partly_cloudy_icon);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
+        toolbar.setNavigationIcon(R.drawable.partly_cloudy_icon);
         setSupportActionBar(toolbar);
 
         //Setando o botão home
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         mCity = (City) getIntent().getSerializableExtra("CITY");
 
@@ -51,7 +52,7 @@ public class CityDetailActivity extends AppCompatActivity{
         temp_min = (TextView) findViewById(R.id.temp_min);
 
         if(mCity != null){
-            toolbar.setTitle(mCity.getName());
+            getSupportActionBar().setTitle(mCity.getName());
             thumbnail.setImageResource(mCity.getIcon());
             main.setText(mCity.getTitle_description());
             description.setText(mCity.getDescription());
