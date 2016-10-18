@@ -32,6 +32,7 @@ Os módulos feitos são:
 Módulo responsável por tudo relacionado as locais/cidades.
 
 Classes:
+
 	- City: Classe que define uma cidade;
 	- CityAdapter: Classe que cria uma adapter de cidades para um RecicleView.
 	- CityHistoricListFragment: Fragmento de Histórico de cidades visualizadas.
@@ -43,6 +44,7 @@ Classes:
 Módulo responsável pela apresentação do APP.
 	
 Classes:
+
 	- LaunchActivity: SplashScreen do Aplicativo.
 
 ### Main
@@ -50,6 +52,7 @@ Classes:
 Módulo que serve para a classe principal do aplicativo (Main).
 
 Classes:
+
 	- Main: Define a Activite principal que reúne o mapa e o histórico.
 
 ### Map
@@ -74,6 +77,7 @@ Classes:
 Módulo responsável por classes que auxiliam outras no projeto.
 
 Classes:
+
 	- DividerItemDecoration: Desenha uma linha entre itens nas listas.
 	- OwmApplication: Prover um contexto em qualquer lugar do projeto.
 	- OwmVars: Váriáveis estáticas do projeto.
