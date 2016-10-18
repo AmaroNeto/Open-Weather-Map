@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.amaro.openweathermap.R;
+import com.amaro.openweathermap.city.CityHistoricListFragment;
 import com.amaro.openweathermap.city.CityListFragment;
 import com.amaro.openweathermap.map.MapViewFragment;
 
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity{
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new MapViewFragment(), getString(R.string.map));
-        adapter.addFragment(new CityListFragment(),  getString(R.string.favorites));
+        adapter.addFragment(new CityHistoricListFragment(),  getString(R.string.historic));
 
         viewPager.setAdapter(adapter);
     }

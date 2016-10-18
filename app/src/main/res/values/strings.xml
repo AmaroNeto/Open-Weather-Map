@@ -11,4 +11,5 @@
     <string name="temperature_max">Max Temperature</string>
     <string name="temperature_min">Min Temperature</string>
     <string name="transition_icon_image">Transition Icon</string>
+    <string name="historic">Historic</string>
 </resources>

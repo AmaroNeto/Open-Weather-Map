@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amaro.openweathermap.R;
+import com.amaro.openweathermap.repository.CityController;
 
 import java.util.List;
 
@@ -30,14 +31,19 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
 
     private Context context;
     private List<City> mCities;
+    private CityController cityController;
+    private boolean isHistoric;
 
     public CityAdapter(Context ctx){
         context = ctx;
     }
 
-    public CityAdapter(Context ctx, List<City> cities){
+    public CityAdapter(Context ctx, List<City> cities,boolean isHistoric){
         context = ctx;
         mCities = cities;
+        cityController = CityController.getInstance();
+        this.isHistoric = isHistoric;
+
     }
 
     public void setFileList(List<City> files){
@@ -116,7 +122,20 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.CityViewHolder
         @Override
         public void onClick(View v) {
 
-            Log.d("OWM","Clicou "+data.getName());
+            //Reaproveitamento de codigo
+            //so será execultado se não for o historico q fizer isso
+            if(!isHistoric) {
+                //add city no historico
+                //Verifica se ja existe a cidade no historico
+                if (cityController.existInHistoric(data.getId())) {
+                    //Atualiza
+                    cityController.deleteCityfromHistoric(data.getId());
+                    cityController.addCityToHistoric(data);
+                } else {
+                    //adiciona um novo
+                    cityController.addCityToHistoric(data);
+                }
+            }
 
             //Vai para a pagina de detalhes
             Intent it = new Intent(context,CityDetailActivity.class);

@@ -15,11 +15,11 @@ public class CityController {
 
     private static CityController instance;
     private List<City> cities;
-    private List<City> favorites;
+    private List<City> historic;
 
     private CityController(){
         cities = new ArrayList<City>();
-        favorites = new ArrayList<City>();
+        historic = new ArrayList<City>();
     }
 
     public static CityController getInstance(){
@@ -39,8 +39,48 @@ public class CityController {
         return cities;
     }
 
+    public List<City> getAllHistoricCities(){
+        return historic;
+    }
+
     public void cleanCities(){
         cities.clear();
+    }
+
+
+    public void addCityToHistoric(City city){
+
+        historic.add(city);
+    }
+
+    public void deleteCityfromHistoric(String id){
+        City cityToRemove = null;
+
+        for(City city : historic){
+
+            if(city.getId().equals(id)){
+                cityToRemove = city;
+            }
+
+        }
+
+        if(cityToRemove != null){
+            historic.remove(cityToRemove);
+        }
+    }
+
+    public boolean existInHistoric(String id){
+
+
+        for(City city : historic){
+
+            if(city.getId().equals(id)){
+                return true;
+            }
+
+        }
+
+        return false;
     }
 
 }

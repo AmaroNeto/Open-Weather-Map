@@ -12,16 +12,13 @@ import com.amaro.openweathermap.R;
 import com.amaro.openweathermap.repository.CityController;
 import com.amaro.openweathermap.util.DividerItemDecoration;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Fragment com a lista de cidades.
- *
- * Created by amaro on 15/10/16.
+ * Created by amaro on 17/10/16.
  */
 
-public class CityListFragment extends Fragment{
+public class CityHistoricListFragment  extends Fragment {
 
     private static final String TAG = "CityListFragment";
 
@@ -52,8 +49,10 @@ public class CityListFragment extends Fragment{
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.city_recycleview);
 
         mLayoutManager = new LinearLayoutManager(getActivity());
+        mLayoutManager.setReverseLayout(true);
+        mLayoutManager.setStackFromEnd(true);
 
-        mAdapter = new CityAdapter(getActivity(),getmCities(),false);
+        mAdapter = new CityAdapter(getActivity(),getmCities(),true);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
@@ -64,12 +63,17 @@ public class CityListFragment extends Fragment{
 
     public List<City> getmCities(){
 
-        //List<City> cities = new ArrayList<City>();
-
-        List<City> cities = cityController.getAllCities();
+        List<City> cities = cityController.getAllHistoricCities();
         return cities;
 
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
 
+        //mAdapter = new CityAdapter(getActivity(),getmCities());
+        //mRecyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
+    }
 }

@@ -40,8 +40,8 @@ public class MapViewFragment extends Fragment implements GoogleMap.OnMapClickLis
     private GoogleMap googleMap;
 
     private Location mLastLocation;
-    private String lat;
-    private String lng;
+    private Double lat;
+    private Double lng;
 
 
     GoogleApiClient mGoogleApiClient;
@@ -85,7 +85,7 @@ public class MapViewFragment extends Fragment implements GoogleMap.OnMapClickLis
                 }
 
                 googleMap.setMyLocationEnabled(true);
-                //googleMap.getUiSettings().setZoomControlsEnabled(true);
+               // googleMap.getUiSettings().setZoomControlsEnabled(true);
                 googleMap.setOnMarkerClickListener(MapViewFragment.this);
                 googleMap.setOnMapClickListener(MapViewFragment.this);
                 //googleMap.setOnMyLocationChangeListener(MapViewFragment.this);
@@ -94,8 +94,8 @@ public class MapViewFragment extends Fragment implements GoogleMap.OnMapClickLis
             }
         });
 
-        lat = "";
-        lng = "";
+        lat = 0.0;
+        lng = 0.0;
 
 
         return rootView;
@@ -141,11 +141,18 @@ public class MapViewFragment extends Fragment implements GoogleMap.OnMapClickLis
 
             mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                     mGoogleApiClient);
-            if (mLastLocation != null) {
+            if(lat.equals(0.0) || lng.equals(0.0)) {
+                if (mLastLocation != null) {
 
-                LatLng i = new LatLng(mLastLocation.getLatitude(),mLastLocation.getLongitude());
+                    LatLng i = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
 
-                CameraPosition cameraPosition = new CameraPosition.Builder().target(i).zoom(8).build();
+                    CameraPosition cameraPosition = new CameraPosition.Builder().target(i).zoom(7).build();
+                    googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                }
+            }else{
+
+                LatLng i = new LatLng(lat,lng);
+                CameraPosition cameraPosition = new CameraPosition.Builder().target(i).zoom(7).build();
                 googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
             }
 
@@ -168,13 +175,13 @@ public class MapViewFragment extends Fragment implements GoogleMap.OnMapClickLis
         switch (item.getItemId()){
             case R.id.action_search:
 
-                if(lat.equals("") || lng.equals("")){
+                if(lat.equals(0.0) || lng.equals(0.0)){
 
                     Toast.makeText(getActivity(),this.getString(R.string.choose_a_place),Toast.LENGTH_LONG).show();
 
                 }else{
                     //Log.d("OPW","CLICOU: lat : "+ lat+" : lng "+lng);
-                    BackgroundTask task = new BackgroundTask(getActivity(), lat, lng);
+                    BackgroundTask task = new BackgroundTask(getActivity(), lat+"", lng+"");
                     task.execute();
                 }
 
@@ -198,8 +205,8 @@ public class MapViewFragment extends Fragment implements GoogleMap.OnMapClickLis
     public void onMapClick(LatLng latLng) {
 
         //Seleciona as coordenadas de pesquisa
-        lat = latLng.latitude+"";
-        lng = latLng.longitude+"";
+        lat = latLng.latitude;
+        lng = latLng.longitude;
 
         googleMap.clear();
         googleMap.addMarker(new MarkerOptions()
