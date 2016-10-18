@@ -1,16 +1,16 @@
 <resources>
-    <string name="app_name">Open Weather Map</string>
+    <string name="app_name" translatable="false">Open Weather Map</string>
     <string name="map">Map</string>
     <string name="favorites">Favorites</string>
     <string name="wait_a_little">Wait a Little ...</string>
     <string name="download_data">Downloading Data</string>
     <string name="choose_a_place">Choose a location on the map</string>
     <string name="error_download_data">Error Download Data</string>
-    <string name="by_amaro">by Amaro</string>
+    <string name="by_amaro" translatable="false">by Amaro</string>
     <string name="temperature">Temperature</string>
     <string name="temperature_max">Max Temperature</string>
     <string name="temperature_min">Min Temperature</string>
-    <string name="transition_icon_image">Transition Icon</string>
+    <string name="transition_icon_image" translatable="false">Transition Icon</string>
     <string name="historic">Historic</string>
     <string name="enable_internet">Necessary to Enable Internet</string>
 </resources>

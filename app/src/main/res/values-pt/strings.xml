@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name" translatable="false">Open Weather Map</string>
+    <string name="map">Mapa</string>
+    <string name="favorites">Favoritos</string>
+    <string name="wait_a_little">Espere um pouco ...</string>
+    <string name="download_data">Baixando Dados</string>
+    <string name="choose_a_place">Escolha um ponto no Mapa</string>
+    <string name="error_download_data">Erro ao baixar dados</string>
+    <string name="by_amaro" translatable="false">by Amaro</string>
+    <string name="temperature">Temperatura</string>
+    <string name="temperature_max">Max Temperatura</string>
+    <string name="temperature_min">Min Temperatura</string>
+    <string name="transition_icon_image" translatable="false">Transition Icon</string>
+    <string name="historic">Historico</string>
+    <string name="enable_internet">Necessario Habilitar a Internet</string>
+</resources>
