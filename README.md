@@ -5,12 +5,12 @@
 - Clique no Mapa e selecione o Local que deseja ver as informações do tempo;
 - Depois clique no botão no canto direito superior (duas setas em forma de circulo);
 - Espere o Download de dados;
-- Aparecerá uma lista com as cidades da região selecionada, escolha uma e aparece as informações sobre ela;
-- As cidades que você visualizou recentemente aparecerão no historico do App.
+- Aparecerá uma lista com as cidades da região selecionada, escolha uma e irá aparece as informações sobre ela;
+- As cidades que você visualizou recentemente aparecerão no histórico do App.
 
 ##Info sobre o APP
 
-- Disponivel para android a parti da API 17 - Android 4.2/Jelly Bean;
+- Disponível para Android a parti da API 17 - Android 4.2/Jelly Bean;
 - Suporte a inglês e Português;
 - Feito senguindo critérios do Material Design;
 
@@ -33,8 +33,8 @@ Módulo responsável por tudo relacionado as locais/cidades.
 
 Classes:
 	- City: Classe que define uma cidade;
-	- CityAdapter: Classe que cria uma adapter de cidades para um RecicleView;
-	- CityHistoricListFragment: Fragmento de Historico de cidades visualizadas;
+	- CityAdapter: Classe que cria uma adapter de cidades para um RecicleView.
+	- CityHistoricListFragment: Fragmento de Histórico de cidades visualizadas.
 	- CityListActivity: Activity de Lista de Cidades;
 	- CityListFragment: Define um fragmento que cria a lista de cidades achadas.
 
@@ -43,7 +43,7 @@ Classes:
 Módulo responsável pela apresentação do APP.
 	
 Classes:
-	- LaunchActivity: SplashScreen do Aplicativo;
+	- LaunchActivity: SplashScreen do Aplicativo.
 
 ### Main
 
